@@ -1,5 +1,75 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = null;
 }
+
+<html>
+<head>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: "Source Sans 3", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card p-5 mt-5 w-75 mx-auto shadow">
+            <div class="text-center">
+                <h5>Personel Yönetim Sistemi</h5>
+                <p class="lead">
+                    <i> Kayıt Ekranı</i>
+                </p>
+            </div>
+
+            <form asp-action="Register" asp-controller="Account" asp-area="" class="form-floating mt-3">
+
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control"  placeholder="">
+                    <label for="name">Ad</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control"  placeholder="">
+                    <label for="name">Soyad</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control"  placeholder="">
+                    <label for="username">Kulanıcı adı</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control"  placeholder="">
+                    <label for="password">Parola</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control"  placeholder="">
+                    <label for="confirmpassword">Parola Tekrar</label>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-lg btn-primary" type="submit">Kayıt Ol</button>
+                    <a class="btn btn-lg btn-info" asp-action="Login" asp-controller="Account" asp-area="">Giriş Yap</a>
+                </div>
+
+                <div asp-validation-summary="All" class="text-danger lead">
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
