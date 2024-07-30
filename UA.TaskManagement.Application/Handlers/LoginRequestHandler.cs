@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UA.TaskManagement.Application.DTOs;
+using UA.TaskManagement.Application.Enums;
 using UA.TaskManagement.Application.Extensions;
 using UA.TaskManagement.Application.Interfaces;
 using UA.TaskManagement.Application.Request;
@@ -30,7 +31,7 @@ namespace UA.TaskManagement.Application.Handlers
                var user=await _userRepository.GetByFilter(x=>x.Password==request.Password && x.UserName==request.Name);
                 if(user!=null)
                 {
-                    return new Result<LoginResponseDto?>(new LoginResponseDto(user.Name, user.Surname, user.AppRoleId), true, null, null);
+                    return new Result<LoginResponseDto?>(new LoginResponseDto(user.Name, user.Surname,(RoleType) user.AppRoleId), true, null, null);
                 }
                 else
                 {
