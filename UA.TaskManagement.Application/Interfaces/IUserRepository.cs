@@ -10,6 +10,6 @@ namespace UA.TaskManagement.Application.Interfaces
 {
     public interface IUserRepository
     {
-        Task<AppUser?> GetByFilter(Expression<Func<AppUser, bool>> filter);
+        Task<AppUser?> GetByFilter(Expression<Func<AppUser, bool>> filter, bool asNoTracking = true);
     }
 }

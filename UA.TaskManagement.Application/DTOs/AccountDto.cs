@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace UA.TaskManagement.Application.DTOs
 {
-    public record LoginDto(string Name,string Password);
+   public record LoginResponseDto(string Name,string Surname,int roleId);
 }

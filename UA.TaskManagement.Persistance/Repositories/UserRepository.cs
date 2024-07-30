@@ -20,9 +20,14 @@ namespace UA.TaskManagement.Persistance.Repositories
             _context = context;
         }
 
-        public async Task<AppUser?> GetByFilter(Expression<Func<AppUser,bool>> filter)
+        public async Task<AppUser?> GetByFilter(Expression<Func<AppUser,bool>> filter,bool asNoTracking=true)
         {
+            if(asNoTracking)
+            {
+                return await _context.Users.AsNoTracking().SingleOrDefaultAsync(filter);
+            }
             return await _context.Users.SingleOrDefaultAsync(filter);
+
         }
     }
 }

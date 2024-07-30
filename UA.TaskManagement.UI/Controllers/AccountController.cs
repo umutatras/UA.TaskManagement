@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UA.TaskManagement.Application.DTOs;
+using UA.TaskManagement.Application.Request;
 
 namespace UA.TaskManagement.UI.Controllers
 {
@@ -10,7 +11,7 @@ namespace UA.TaskManagement.UI.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(LoginDto dto)
+        public IActionResult Login(LoginRequest dto)
         {
             return View();
         }
