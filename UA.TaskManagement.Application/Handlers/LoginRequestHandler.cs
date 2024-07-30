@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UA.TaskManagement.Application.DTOs;
+using UA.TaskManagement.Application.Extensions;
 using UA.TaskManagement.Application.Interfaces;
 using UA.TaskManagement.Application.Request;
 using UA.TaskManagement.Application.Validators;
@@ -39,13 +40,7 @@ namespace UA.TaskManagement.Application.Handlers
             }
             else
             {
-                var errorList=new List<ValidationError>();
-                var errors = validatonResult.Errors.ToList();
-                foreach (var error in errors)
-                {
-                    errorList.Add(new ValidationError(error.PropertyName,error.ErrorMessage)
-                    );
-                }
+                var errorList = validatonResult.Errors.ToMap();
                 return new Result<LoginResponseDto?>(null, false, null, errorList);
             }
          
