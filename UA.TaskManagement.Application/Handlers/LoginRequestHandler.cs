@@ -12,7 +12,7 @@ using UA.TaskManagement.Application.Validators;
 
 namespace UA.TaskManagement.Application.Handlers
 {
-    public class LoginRequestHandler : IRequestHandler<LoginRequest, Result<LoginResponseDto>>
+    public class LoginRequestHandler : IRequestHandler<LoginRequest, Result<LoginResponseDto?>>
     {
         private readonly IUserRepository _userRepository;
 
