@@ -18,4 +18,8 @@
     <ProjectReference Include="..\UA.TaskManagement.Persistance\UA.TaskManagement.Persistance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
