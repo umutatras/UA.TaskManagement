@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UA.TaskManagement.Application\UA.TaskManagement.Application.csproj" />
+    <ProjectReference Include="..\UA.TaskManagement.Persistance\UA.TaskManagement.Persistance.csproj" />
+  </ItemGroup>
+
 </Project>
