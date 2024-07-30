@@ -1,4 +1,5 @@
-﻿@{
+﻿@model LoginRequest
+@{
     Layout = null;
 }
 <html>
@@ -31,17 +32,17 @@
 
             <form asp-action="Login" asp-controller="Account" asp-area="" class="form-floating mt-3" method="post">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control"  placeholder="">
+                    <input type="text" class="form-control" asp-for="Name"  placeholder="">
                     <label for="username">Kullanıcı Adı</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control"  placeholder="">
+                    <input type="password" class="form-control" asp-for="Password"  placeholder="">
                     <label for="password">Parola</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" @* checked="@Model.RememberMe" *@  id="rememberMe">
+                    <input class="form-check-input" type="checkbox" asp-for="RememberMe"  checked="@Model.RememberMe"  id="rememberMe">
                     <label class="form-check-label" for="rememberMe">
                         Beni Hatırla
                     </label>

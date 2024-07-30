@@ -19,7 +19,7 @@ namespace UA.TaskManagement.UI.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginRequest("",""));
         }
         [HttpPost]
         public async Task<IActionResult> Login(LoginRequest dto)
@@ -27,7 +27,9 @@ namespace UA.TaskManagement.UI.Controllers
            var result=await _mediator.Send(dto);
             if(result.IsSuccess)
             {
-                return RedirectToAction("", "",new {area=""});
+               await SetAuthCookie(result.Data,dto.RememberMe);
+
+                return RedirectToAction("Index", "Home",new {area="Admin"});
             }
             else
             {
@@ -55,7 +57,7 @@ namespace UA.TaskManagement.UI.Controllers
             return View();
         }
 
-        private async Task SetAuthCookie(LoginResponseDto dto, bool rememberMe)
+        private async Task SetAuthCookie(LoginResponseDto dto,bool rememberMe)
         {
             // User => 
 
@@ -65,7 +67,7 @@ namespace UA.TaskManagement.UI.Controllers
         {
             new Claim("Name", dto.Name),
             new Claim("Surname", dto.Surname),
-            new Claim(ClaimTypes.Role, dto.Role.ToString()),
+            new Claim(ClaimTypes.Role, dto.role.ToString()),
         };
 
             var claimsIdentity = new ClaimsIdentity(
