@@ -52,9 +52,10 @@ namespace UA.TaskManagement.UI.Controllers
         {
             return View();
         }
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOut()
         {
-            return View();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
         }
 
         private async Task SetAuthCookie(LoginResponseDto dto,bool rememberMe)

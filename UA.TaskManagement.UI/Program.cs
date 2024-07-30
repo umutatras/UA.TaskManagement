@@ -20,5 +20,5 @@ app.UseStaticFiles();
 app.UseAuthentication();    
 app.UseAuthorization();
 app.MapControllerRoute(name: "area", pattern: "{Area}/{Controller=Home}/{Action=Index}/{id?}");
-app.MapControllerRoute(name: "default", pattern: "{Area}/{Controller=Account}/{Action=Login}/{id?}");
+app.MapControllerRoute(name: "default", pattern: "{Controller=Account}/{Action=Login}/{id?}");
 app.Run();
