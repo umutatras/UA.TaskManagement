@@ -52,6 +52,32 @@ namespace UA.TaskManagement.UI.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterRequest req)
+        {
+            var result = await _mediator.Send(req);
+            if(result.IsSuccess)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+
+                if (result.Errors != null && result.Errors.Count > 0)
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError(item.propertyName, item.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.ErrorMessage ?? "Bilinmeyen bir hata oluştu,sistem üreticinize başvurun");
+                    return View(req);
+                }
+            }
+            return View();
+        }
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

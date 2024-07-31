@@ -28,7 +28,7 @@ namespace UA.TaskManagement.Application.Handlers
             var validatonResult=await validator.ValidateAsync(request);
             if(validatonResult.IsValid)
             {
-               var user=await _userRepository.GetByFilter(x=>x.Password==request.Password && x.UserName==request.Name);
+               var user=await _userRepository.GetByFilterAsync(x=>x.Password==request.Password && x.UserName==request.Name);
                 if(user!=null)
                 {
                     return new Result<LoginResponseDto?>(new LoginResponseDto(user.Name, user.Surname,(RoleType) user.AppRoleId), true, null, null);
