@@ -5,5 +5,5 @@ namespace UA.TaskManagement.Application.Request
 {
     public record LoginRequest(string? Name, string? Password, bool RememberMe = false) :IRequest<Result<LoginResponseDto?>>;
 
-    public record RegisterRequest(string Username,string Password,string Name,string Surname):IRequest<Result<NoData>>;
+    public record RegisterRequest(string? Username,string? Password,string? ConfirmPassword,string? Name,string? Surname):IRequest<Result<NoData>>;
 }

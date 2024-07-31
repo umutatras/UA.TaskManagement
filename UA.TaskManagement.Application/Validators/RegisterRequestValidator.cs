@@ -11,6 +11,9 @@ namespace UA.TaskManagement.Application.Validators
             this.RuleFor(x => x.Surname).NotEmpty().WithMessage("Kullanıcı adı boş geçilemez.");
             this.RuleFor(x => x.Username).NotEmpty().WithMessage("Kullanıcı adı boş geçilemez.");
             this.RuleFor(x => x.Password).NotEmpty().WithMessage("Şifre boş geçilemez.");
+            this.RuleFor(x => x.ConfirmPassword).NotEmpty().WithMessage("Şifre boş geçilemez.");
+            this.RuleFor(x => x.ConfirmPassword).NotEmpty().WithMessage("Şifre boş geçilemez.");
+            this.RuleFor(x => x.Password).Equal(x=>x.ConfirmPassword).WithMessage("Şifreler aynı olmak zorundadır.!");
         }
     }
 }
