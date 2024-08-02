@@ -21,6 +21,7 @@ namespace UA.TaskManagement.Persistance
                 opt.UseSqlServer(configuration.GetConnectionString("Local"));
             });
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPriorityRepository, PriorityRepository>();
         }
     }
 }
