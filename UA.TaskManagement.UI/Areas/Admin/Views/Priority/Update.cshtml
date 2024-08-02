@@ -1,10 +1,15 @@
-﻿@model PriortyCreateRequest
+﻿﻿@model PriortyUpdateRequest
 @{
     Layout = "_AdminLayout";
     ViewBag.Title = "Aciliyet Durum Güncelle";
 }
 
-<form asp-action="Create" asp-controller="Priority" asp-area="Admin" method="post">
+
+<form asp-action="Update" asp-controller="Priority" asp-area="Admin" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+
     <div class="mb-3">
         <label class="form-label">Aciliyet Tanımı :</label>
         <input asp-for="Definition" class="form-control" />
