@@ -21,5 +21,38 @@ namespace UA.TaskManagement.UI.Controllers.Admin
             var result=await this.mediator.Send(new PriortyListRequest());
             return View(result.Data);
         }
+        public IActionResult Create()
+        {
+            ViewBag.Active = "Priority";
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(PriortyCreateRequest request)
+        {
+            ViewBag.Active = "Priority";
+            var result = await this.mediator.Send(request);
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                if (result.Errors?.Count > 0)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.propertyName, error.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.ErrorMessage ?? "Bilinmeyen bir hata oluştu, sistem üreticinize başvurun");
+                }
+
+                return View(request);
+            }
+
+        }
     }
 }
