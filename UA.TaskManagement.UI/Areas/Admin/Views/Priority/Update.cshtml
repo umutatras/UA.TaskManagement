@@ -1,4 +1,5 @@
-﻿﻿@model PriortyUpdateRequest
+﻿@model PriortyUpdateRequest
+
 @{
     Layout = "_AdminLayout";
     ViewBag.Title = "Aciliyet Durum Güncelle";
@@ -7,7 +8,7 @@
 
 <form asp-action="Update" asp-controller="Priority" asp-area="Admin" method="post">
 
-    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="id" />
 
 
     <div class="mb-3">

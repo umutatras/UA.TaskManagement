@@ -12,6 +12,6 @@ namespace UA.TaskManagement.Application.Request
     public record PriortyGetByIdRequest(int id):IRequest<Result<PriorityListDto>>;
     public record PriortyDeleteRequest(int id):IRequest<Result<NoData>>;
     public record PriortyUpdateRequest(int id,string Definition):IRequest<Result<NoData>>;
-    public record PriortyCreateRequest(string Definition):IRequest<Result<NoData>>;
+    public record PriortyCreateRequest(string? Definition) : IRequest<Result<NoData>>;
 
 }

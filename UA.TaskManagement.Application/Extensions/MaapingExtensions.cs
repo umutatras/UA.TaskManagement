@@ -22,5 +22,23 @@ namespace UA.TaskManagement.Application.Extensions
                 UserName = req.Username
             };
         }
+        public static Priority ToMap(this PriortyCreateRequest request)
+        {
+
+            return new Priority
+            {
+                Definition = request.Definition,
+            };
+        }
+        //public static AppTask ToMap(this AppTaskCreateRequest request)
+        //{
+        //    return new AppTask
+        //    {
+        //        Description = request.Description,
+        //        Title = request.Title,
+        //        PriorityId = request.PriorityId,
+        //        State = false
+        //    };
+        //}
     }
 }
