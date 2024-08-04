@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UA.TaskManagement.Application.DTOs;
 
 namespace UA.TaskManagement.Application.Request
 {
-   public record AppTaskListRequest(int Id,string Title,string Description,string PriorityDefinition,bool State);
+   public record AppTaskListRequest():IRequest<Result<List<AppTaskListDto>>>;
 }
