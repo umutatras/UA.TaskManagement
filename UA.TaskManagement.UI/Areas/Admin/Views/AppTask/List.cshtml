@@ -1,0 +1,113 @@
+﻿﻿@model List<AppTaskListDto>
+
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "İş Emri Tanımlama Ekranı";
+}
+
+
+<div class="row">
+    <div class="col-9">
+        <a asp-action="Create" asp-controller="AppTask" asp-area="Admin">Yeni İş Emri Ekle</a>
+    </div>
+
+
+    <div class="col-3">
+        <form asp-action="List" asp-controller="AppTask" asp-area="Admin" method="get">
+
+
+
+            <div class="input-group mb-3">
+                <input type="text" name="s" class="form-control" placeholder="İş Emri Ara" aria-label="İş Emri Ara" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Ara</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+@{
+
+    if (!string.IsNullOrEmpty(ViewBag.s))
+    {
+        <div class="row">
+            <div class="alert alert-secondary" role="alert">
+                Şu anda <strong> @ViewBag.s </strong>arama filtresine  göre kayıtları görmektesiniz
+                <a  asp-action="List" asp-controller="AppTask" asp-route-s="" asp-area="Admin" class="float-end">Filtreyi Kaldır</a>
+            </div>
+        </div>
+
+    }
+}
+
+
+
+
+
+<table class="table table-sm mt-2">
+    <thead>
+        <tr>
+
+            <th scope="col">İş Emri</th>
+            <th scope="col">İşin Aciliyeti</th>
+            <th scope="col">İşin Durumu</t>
+            <th scope="col"></th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Data?.Count > 0)
+        {
+            foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.PriorityDefinition</td>
+                    <td>@(item.State ? "Tamamlandı" : "Tamamlanmadı")</td>
+                    <td>
+                        <a asp-action="Update" asp-controller="AppTask" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Detay</a>
+                        <a asp-action="Delete" onclick="return confirm('silmek istediğiniz emin misin ?')" class="btn btn-sm btn-primary" asp-controller="AppTask " asp-area="Admin" asp-route-id="@item.Id">Sil</a>
+
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+
+                <td colspan="5">Herhangi bir iş emri bulunamadı.</td>
+
+            </tr>
+        }
+
+
+
+
+    </tbody>
+</table>
+
+<div class="float-end">
+
+    <nav aria-label="Page navigation example">
+
+
+        <ul class="pagination">
+
+            @for (int i = 1; i <= Model.TotalPage; i++)
+            {
+                <li class="page-item">
+                    <a class="page-link @(Model.ActivePage == i ? "active":"")" asp-route-activePage="@i" asp-route-s="@ViewBag.s" asp-all-route-data" asp-action="List" asp-controller="AppTask" asp-area="Admin">@i</a>
+                </li>
+            }
+
+
+
+        </ul>
+    </nav>
+
+</div>
