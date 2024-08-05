@@ -16,10 +16,10 @@ namespace UA.TaskManagement.UI.Controllers.Admin
             this.mediator = mediator;
         }
 
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int activePage=1)
         {
             ViewBag.Active = "AppTask";
-            var result = await this.mediator.Send(new AppTaskListRequest());
+            var result = await this.mediator.Send(new AppTaskListRequest(activePage));
             return View(result);
         }
     }

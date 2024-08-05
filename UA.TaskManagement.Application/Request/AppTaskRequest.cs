@@ -8,5 +8,10 @@ using UA.TaskManagement.Application.DTOs;
 
 namespace UA.TaskManagement.Application.Request
 {
-   public record AppTaskListRequest():IRequest<Result<List<AppTaskListDto>>>;
+    public record AppTaskListRequest : PagedRequest, IRequest<PagedResult<AppTaskListDto>>
+    {
+        public AppTaskListRequest(int activePage) : base(activePage)
+        {
+        }
+    }
 }
