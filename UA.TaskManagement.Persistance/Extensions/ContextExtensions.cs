@@ -12,7 +12,7 @@ namespace UA.TaskManagement.Persistance.Extensions
     {
         public static async Task<PagedData<T>> ToPagedListAsync<T>(this IQueryable<T> query,int activePage,int pageSize=10) where T : class,new()
         {
-           var list= await query.AsNoTracking().Skip((1-activePage)*pageSize).Take(pageSize).ToListAsync();
+           var list= await query.AsNoTracking().Skip((activePage-1)*pageSize).Take(pageSize).ToListAsync();
 
             var totalPage = query.Count();
 
