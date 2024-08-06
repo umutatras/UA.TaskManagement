@@ -21,9 +21,14 @@ namespace UA.TaskManagement.Persistance.Repositories
             _context = context;
         }
 
-        public async Task<PagedData<AppTask> >GetAllAsync(int activePage,int pageSize=10)
+        public async Task<PagedData<AppTask> >GetAllAsync(int activePage,string? s=null,int pageSize=10)
         {
-            return await _context.Tasks.Include(x=>x.Priority).AsNoTracking().ToPagedListAsync(activePage,pageSize);
+            if(string.IsNullOrEmpty(s))
+            {
+                return await _context.Tasks.Include(x => x.Priority).AsNoTracking().ToPagedListAsync(activePage, pageSize);
+            }
+            return await _context.Tasks.Where(f=>f.Title.ToLowerInvariant().Contains(s)).Include(x => x.Priority).AsNoTracking().ToPagedListAsync(activePage, pageSize);
+
         }
     }
 }

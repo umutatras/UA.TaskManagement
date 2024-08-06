@@ -11,7 +11,7 @@ namespace UA.TaskManagement.Application.DTOs
     public record ValidationError(string propertyName, string ErrorMessage); 
     public record NoData();
   
-    public record PagedResult<T>(List<T> Data, int ActivePage,int PageSize,int TotalCount);
+    public record PagedResult<T>(List<T> Data, int ActivePage,int PageSize,int TotalPages);
     public record PagedData<T> where T : class, new()
     {
         public int ActivePage { get; set; }

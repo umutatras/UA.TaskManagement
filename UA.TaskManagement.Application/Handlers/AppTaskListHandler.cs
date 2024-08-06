@@ -21,7 +21,7 @@ namespace UA.TaskManagement.Application.Handlers
 
         public async Task<PagedResult<AppTaskListDto>> Handle(AppTaskListRequest request, CancellationToken cancellationToken)
         {
-            var list=await _repository.GetAllAsync(request.activePage);
+            var list=await _repository.GetAllAsync(activePage:request.activePage,s:request.S,pageSize:5);
             var result= new List<AppTaskListDto>();
             foreach (var appTask in list.Data)
             {
