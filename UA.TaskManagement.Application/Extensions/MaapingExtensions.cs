@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UA.TaskManagement.Application.Enums;
 using UA.TaskManagement.Application.Request;
 using UA.TaskManagement.Domain.Entities;
+using static UA.TaskManagement.Application.Request.AppTaskListRequest;
 
 namespace UA.TaskManagement.Application.Extensions
 {
@@ -30,15 +31,15 @@ namespace UA.TaskManagement.Application.Extensions
                 Definition = request.Definition,
             };
         }
-        //public static AppTask ToMap(this AppTaskCreateRequest request)
-        //{
-        //    return new AppTask
-        //    {
-        //        Description = request.Description,
-        //        Title = request.Title,
-        //        PriorityId = request.PriorityId,
-        //        State = false
-        //    };
-        //}
+        public static AppTask ToMap(this AppTaskCreateRequest request)
+        {
+            return new AppTask
+            {
+                Description = request.Description,
+                Title = request.Title,
+                PriorityId = request.PriorityId,
+                State = false
+            };
+        }
     }
 }

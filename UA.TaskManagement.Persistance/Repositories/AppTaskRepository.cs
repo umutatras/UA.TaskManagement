@@ -30,5 +30,10 @@ namespace UA.TaskManagement.Persistance.Repositories
             return await _context.Tasks.Where(f=>f.Title.ToLowerInvariant().Contains(s)).Include(x => x.Priority).AsNoTracking().ToPagedListAsync(activePage, pageSize);
 
         }
+        public async Task<int> CreateAsync(AppTask task)
+        {
+            await _context.Tasks.AddAsync(task);
+            return await _context.SaveChangesAsync();
+        }
     }
 }

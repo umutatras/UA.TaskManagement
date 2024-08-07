@@ -14,6 +14,8 @@ namespace UA.TaskManagement.Application.Request
         {
             S = s;
         }
+        public record AppTaskCreateRequest(string? Title, string? Description, int PriorityId) : IRequest<Result<AppTaskDto>>;
+
         public string? S { get; set; }//searchstring
     }
 }
